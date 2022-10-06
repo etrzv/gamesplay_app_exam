@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-
 from gamesplay_app.main.models import Profile
 
 
@@ -13,15 +12,14 @@ def get_profile():
 def show_home(request):
     profile = get_profile()
 
-    if not profile:
-        return redirect('show dashboard')
+    # if not profile:
+    #     return redirect('show dashboard')
 
     return render(request, 'home-page.html')
 
 
 def show_dashboard(request):
     return render(request, 'dashboard.html')
-
 
 
 # def get_profile():

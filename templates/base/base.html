@@ -1,17 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>GamesPlay</title>
+</head>
 
 <body>
 <div id="box">
     <header>
         <h1><a class="home" href="{% url 'show index' %}">GamesPlay</a></h1>
         <nav>
-            <a href="{% url 'show dashboard' %}">Dashboard</a>
-            <a href="{% url 'create game' %}">Create Game</a>
-            <a href="{% url 'details profile' %}">Profile</a>
+            {% if not no_profile %}
+                <a href="{% url 'show dashboard' %}">Dashboard</a>
+                <a href="{% url 'create game' %}">Create Game</a>
+                <a href="{% url 'details profile' %}">Profile</a>
+            {% else %}
+                <a href="{% url 'create profile' %}">Create Profile</a>
+            {% endif %}
+
         </nav>
     </header>
-
 
 <div class="body">
     {% block page_content %}
