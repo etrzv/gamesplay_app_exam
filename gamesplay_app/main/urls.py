@@ -18,7 +18,7 @@ urlpatterns = (
     path('game/delete/<int:pk>', delete_game, name='delete game'),
 )
 
-''' 
+'''
 http://localhost:8000/ - home page
 http://localhost:8000/dashboard/ - dashboard page
 
@@ -31,5 +31,4 @@ http://localhost:8000/game/create/ - create game page
 http://localhost:8000/game/details/<id>/ - details game page
 http://localhost:8000/game/edit/<id>/ - edit game page
 http://localhost:8000/game/delete/<id>/ - delete game page
-
 '''
