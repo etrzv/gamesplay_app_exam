@@ -22,17 +22,40 @@ def create_profile(request):
 
 
 def details_profile(request):
-    form = EditProfileForm(request.POST)
+    profile = models.Profile.objects.first()
+    all_games = models.Game.objects.all()
+    total_games = len(all_games)
+    avg_rating = 0
+
+    if total_games > 0:
+        avg_rating = sum(game.rating for game in all_games) / total_games
+    else:
+        avg_rating = 0.0
 
     context = {
-        'form': form,
+        'profile': profile,
+        'total_games': total_games,
+        'avg_rating': avg_rating,
     }
 
     return render(request, 'details-profile.html', context)
 
 
 def edit_profile(request):
-    return render(request, 'edit-profile.html')
+    profile = models.Profile.objects.first()
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('show index')
+    else:
+        form = EditProfileForm(instance=profile)
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'edit-profile.html', context)
 
 
 def delete_profile(request):
@@ -45,4 +68,5 @@ def delete_profile(request):
         return redirect('show index')
 
     return render(request, 'delete-profile.html')
+
 

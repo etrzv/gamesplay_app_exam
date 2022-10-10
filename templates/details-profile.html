@@ -14,10 +14,10 @@
                     {% if profile.first_name %}{{ profile.first_name }}{% endif %}
                     {% if profile.last_name %}{{ profile.last_name }}{% endif %}
                 </h1>
-                <p class="text">Email: {{ profile.email}}</p>
+                <p class="text">Email: {{ profile.email }}</p>
                 <p class="text">Age: {{ profile.age }}</p>
-                <p class="text">Total games: </p>
-                <p class="text">Average rating: </p>
+                <p class="text">Total games: {{ total_games }}</p>
+                <p class="text">Average rating: {{ avg_rating }}</p>
 
                 <div class="buttons">
                     <a href="{% url 'edit profile' %}" class="button">Edit</a>
