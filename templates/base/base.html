@@ -13,12 +13,12 @@
     <header>
         <h1><a class="home" href="{% url 'show index' %}">GamesPlay</a></h1>
         <nav>
-            {% if not no_profile %}
+            {% if not profile %}
+                <a href="{% url 'create profile' %}">Create Profile</a>
+            {% else %}
                 <a href="{% url 'show dashboard' %}">Dashboard</a>
                 <a href="{% url 'create game' %}">Create Game</a>
                 <a href="{% url 'details profile' %}">Profile</a>
-            {% else %}
-                <a href="{% url 'create profile' %}">Create Profile</a>
             {% endif %}
 
         </nav>

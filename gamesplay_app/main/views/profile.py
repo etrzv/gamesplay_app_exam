@@ -15,7 +15,6 @@ def create_profile(request):
 
     context = {
         'form': form,
-        # 'no_profile': True
 
     }
     return render(request, 'create-profile.html', context)
@@ -53,6 +52,7 @@ def edit_profile(request):
 
     context = {
         'form': form,
+        'profile': profile,
     }
 
     return render(request, 'edit-profile.html', context)
